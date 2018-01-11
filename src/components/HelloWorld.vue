@@ -1,21 +1,137 @@
 <template>
-  <div class="hello">
-    
-  </div>
+<div>
+  <div class="panel-body">
+    <router-link :to="{path: 'service_startBusiness'}">
+        <el-tag >创业专场</el-tag>
+    </router-link>
+    <router-link :to="{path: 'service_legal'}">
+        <el-tag>法律服务</el-tag>
+    </router-link>
+    <router-link :to="{path: 'service_contract'}">
+        <el-tag>合同定制</el-tag>
+    </router-link>
+    <router-link :to="{path: 'service_intellectual'}">
+        <el-tag>知识产权</el-tag>
+    </router-link>
+    <router-link :to="{path: 'service_personal'}">
+        <el-tag>个人业务</el-tag>
+    </router-link>
+</div>
+  <el-table
+    :data="tableData4"
+    style="width: 100%"
+    max-height="250">
+    <el-table-column
+      prop="date"
+      label="日期"
+      width="150">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="province"
+      label="省份"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="city"
+      label="市区"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="地址"
+      width="300">
+    </el-table-column>
+    <el-table-column
+      prop="zip"
+      label="邮编"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      label="操作"
+      width="120">
+      <template slot-scope="scope">
+        <el-button
+          @click.native.prevent="deleteRow(scope.$index, tableData4)"
+          type="text"
+          size="small">
+          移除
+        </el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <upload-img></upload-img>
+</div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js 1App'
+  import UploadImg from './common/upload/uploadImg'
+  export default {
+    methods: {
+      deleteRow(index, rows) {
+        rows.splice(index, 1);
+      }
+    },
+    data() {
+      return {
+        tableData4: [{
+          date: '2016-05-03',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-08',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-06',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-07',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }]
+      }
+    },
+    components: {
+      UploadImg
     }
-  },
-  mounted: function () {
-    this.$nextTick(function () {
-      console.log(process.env);
-    });
-  },
-}
+  }
 </script>

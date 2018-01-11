@@ -45,7 +45,16 @@ module.exports = {
       'static': path.resolve(__dirname,'../static'),
       'lib':path.resolve(__dirname,'../src/lib'),
       'bootstrap':path.resolve(__dirname, '../static/js/bootstrap.min'),
-      'scrollTo' :path.resolve(__dirname,'../static/js/jquery.scrollTo.min')
+      'scrollTo' :path.resolve(__dirname,'../static/js/jquery.scrollTo.min'),
+      'nicescroll' :path.resolve(__dirname,'../static/js/jquery.nicescroll'),
+      'common_scripts' :path.resolve(__dirname, '../static/js/common-scripts'),
+      'mloading' :path.resolve(__dirname, '../static/js/jquery.mloading'),
+      //日期插件
+      'bootstrap_datetimepicker' :path.resolve(__dirname, '../static/js/bootstrap-datetimepicker.min'),
+      'bootstrap_datetimepicker_language' :path.resolve(__dirname, '../static/js/bootstrap-datetimepicker.zh-CN'),
+      //jstree
+      'jstree' :path.resolve(__dirname, '../static/jstree/jstree.min'),
+      'wangEditor':path.resolve(__dirname, '../static/wangEditor')
     },
   },
   plugins: [

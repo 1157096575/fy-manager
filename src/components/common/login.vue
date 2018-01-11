@@ -32,6 +32,7 @@
 <script>
     import globalDialog from 'components/common/globalDialog';
     import md5 from 'js-md5';
+    import apiAuth from 'api/auth';
 
     export default {
         components: {
@@ -46,7 +47,7 @@
                     code:''
                 },
                 error: '',
-                codeImg: ''
+                codeImg: apiAuth.API_URL+'/code?height=80&width=290'
             }
         },
         watch: {
@@ -79,16 +80,38 @@
                     this.error = '请输入验证码！';
                     return;
                 }
-                $("body").mLoading({
-                    text: "登录中。。。"
-                });
+                //$("body").mLoading({
+                //    text: "登录中。。。"
+                //});
                 let param = {
                     password: md5(this.form.password),
                     username: this.form.username,
                     code:this.form.code
                 };
+                console.log(param);
                 let _this = this;
-
+                apiAuth.login(_this, param).then(function (response) {
+                    let body = response.data;
+                    console.log(response);
+                    if (body && body.code != 1) {
+                        /*apiAuth.tips(this,{message:body.msg});*/
+                        this.error = body.msg;
+                        return;
+                    }
+                    if (body && body.code == 1) {
+                        //设置用户信息
+                        //_this.USER_SIGNIN({
+                        //    username: this.form.username,
+                        //    userId:body.userId
+                        //});
+                        // 设置菜单信息
+                        //_this.SET_MENU(body.data);
+                        _this.$router.replace({path: '/home/index'});
+                        return;
+                    }
+                }, function (response) {
+                    console.log(response); // error callback
+                });
             }
         }
     };

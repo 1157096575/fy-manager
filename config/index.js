@@ -14,7 +14,7 @@ for (var dev in ifaces) {
     }
   });
 }
-
+console.log(hostip)
 
 module.exports = {
   dev: {
@@ -22,10 +22,9 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
-
     // Various Dev Server settings
-    //host: 'localhost', // can be overwritten by process.env.HOST
-    host: hostip,
+    host: 'localhost', // can be overwritten by process.env.HOST
+    //host: hostip,
     port: 8801, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true, //true为自动打开浏览器
     errorOverlay: true,
@@ -53,7 +52,7 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true,
+    cssSourceMap: true
   },
 
   build: {
